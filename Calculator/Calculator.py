@@ -4,10 +4,10 @@ afterEqual = 0
 
 root = Tk()
 root.title("Calculator")
-root.geometry("219x319")
+root.geometry("290x330")
 
-screen = Entry(root, width=20, borderwidth=5)
-screen.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
+screen = Entry(root, borderwidth=5, font = "Helvetica 20 bold")
+screen.place(width=210, height=80, x=5, y=5)
 
 def buttonClick(number):
     current = screen.get()
@@ -70,6 +70,12 @@ def buttonSubstract():
         screen.delete(0, END)
         math = "substracting"
 
+def buttonUndo():
+    screen.delete(len(screen.get())-1,END)
+
+def buttonDelete():
+    return none
+
 def buttonEqual():
     secondNumber = screen.get()
     global sNum
@@ -91,38 +97,42 @@ def buttonEqual():
     afterEqual = equalTo
 
 
-button0 = Button(root, text="0", padx=20, pady=20, command=lambda: buttonClick(0))
-button1 = Button(root, text="1", padx=20, pady=20, command=lambda: buttonClick(1))
-button2 = Button(root, text="2", padx=20, pady=20, command=lambda: buttonClick(2))
-button3 = Button(root, text="3", padx=20, pady=20, command=lambda: buttonClick(3))
-button4 = Button(root, text="4", padx=20, pady=20, command=lambda: buttonClick(4))
-button5 = Button(root, text="5", padx=20, pady=20, command=lambda: buttonClick(5))
-button6 = Button(root, text="6", padx=20, pady=20, command=lambda: buttonClick(6))
-button7 = Button(root, text="7", padx=20, pady=20, command=lambda: buttonClick(7))
-button8 = Button(root, text="8", padx=20, pady=20, command=lambda: buttonClick(8))
-button9 = Button(root, text="9", padx=20, pady=20, command=lambda: buttonClick(9))
-buttonTimes = Button(root, text="x", padx=20, pady=20, command=buttonTimes)
-buttonDivide = Button(root, text="/", padx=20, pady=20, command=buttonDivide)
-buttonAdd = Button(root, text="+", padx=20, pady=20, command=buttonAdd)
-buttonSubstract = Button(root, text="-", padx=20, pady=20, command=buttonSubstract)
-buttonEqual = Button(root, text="=", padx=20, pady=20, command=buttonEqual)
+button0 = Button(root, text="0", command=lambda: buttonClick(0))
+button1 = Button(root, text="1", command=lambda: buttonClick(1))
+button2 = Button(root, text="2", command=lambda: buttonClick(2))
+button3 = Button(root, text="3", command=lambda: buttonClick(3))
+button4 = Button(root, text="4", command=lambda: buttonClick(4))
+button5 = Button(root, text="5", command=lambda: buttonClick(5))
+button6 = Button(root, text="6", command=lambda: buttonClick(6))
+button7 = Button(root, text="7", command=lambda: buttonClick(7))
+button8 = Button(root, text="8", command=lambda: buttonClick(8))
+button9 = Button(root, text="9", command=lambda: buttonClick(9))
+buttonTimes = Button(root, text="x", command=buttonTimes)
+buttonDivide = Button(root, text="/", command=buttonDivide)
+buttonAdd = Button(root, text="+", command=buttonAdd)
+buttonSubstract = Button(root, text="-", command=buttonSubstract)
+buttonEqual = Button(root, text="=", command=buttonEqual)
+buttonUndo = Button(root, text = "<-", command=buttonUndo)
+buttonDelete = Button(root, text = "DEL", command = buttonDelete)
 
 
-button0.grid(row=4, column=1)
-button1.grid(row=3, column=0)
-button2.grid(row=3, column=1)
-button3.grid(row=3, column=2)
-button4.grid(row=2, column=0)
-button5.grid(row=2, column=1)
-button6.grid(row=2, column=2)
-button7.grid(row=1, column=0)
-button8.grid(row=1, column=1)
-button9.grid(row=1, column=2)
-buttonTimes.grid(row=1, column=3)
-buttonDivide.grid(row=0, column=3)
-buttonAdd.grid(row=3, column=3)
-buttonSubstract.grid(row=2, column=3)
-buttonEqual.grid(row=4, column=3)
+button0.place(width=72.5, height=60, x=72.5, y=270)
+button1.place(width=72.5, height=60, y=210)
+button2.place(width=72.5, height=60, x=72.5, y=210)
+button3.place(width=72.5, height=60, x=145, y=210)
+button4.place(width=72.5, height=60, y=150)
+button5.place(width=72.5, height=60, x=72.5, y=150)
+button6.place(width=72.5, height=60, x=145, y=150)
+button7.place(width=72.5, height=60, y=90)
+button8.place(width=72.5, height=60, x=72.5, y=90)
+button9.place(width=72.5, height=60, x=145, y=90)
+buttonTimes.place(width=72.5, height=60, x=217.5, y=90)
+buttonDivide.place(width=72.5, height=60, x=217.5, y=30)
+buttonAdd.place(width=72.5, height=60, x=217.5, y=210)
+buttonSubstract.place(width=72.5, height=60, x=217.5, y=150)
+buttonEqual.place(width=72.5, height=60, x=217.5, y=270)
+buttonUndo.place(width=72.5, height=60, x=145, y=270)
+buttonDelete.place(width=72.5, height=60, y=270)
 
 
 root.mainloop()
