@@ -9,6 +9,14 @@ root.geometry("290x330")
 screen = Entry(root, borderwidth=5, font = "Helvetica 20 bold")
 screen.place(width=210, height=80, x=5, y=5)
 
+def validate(entry_text):
+    chars = '1234567890'
+    if any((c not in chars) for c in pin.get()):
+        lpin = int(len(pin.get()))-1 
+        pin.set(pin.get()[:lpin])
+
+pin.trace("w", lambda *args: validate(pin))
+
 def buttonClick(number):
     current = screen.get()
     screen.delete(0, END)
@@ -20,7 +28,6 @@ def buttonAdd():
     if afterEqual !=0:
         fNum = float(afterEqual)
         screen.delete(0, End)
-        global math
         math = "adding"
     else:
         firstNumber = screen.get()
@@ -74,7 +81,11 @@ def buttonUndo():
     screen.delete(len(screen.get())-1,END)
 
 def buttonDelete():
-    return none
+    fNum = 0
+    sNum = 0
+    current = 0
+    math = 0
+    screen.delete(0, END)
 
 def buttonEqual():
     secondNumber = screen.get()
